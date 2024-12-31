@@ -1,0 +1,11 @@
+title Automatic Windows Locking System
+
+Server->Network: Ping devices to determine \nIf everyone is out of the house.
+note over Server,Network: If the result is "request timed out" from all phones \nit means that no one at home.
+
+Server->Window: If no one at home, lock the window
+Window->Sensor: Check the window state.
+Sensor-->Window: Returns window state (Closed/Open)
+Window-->Server: If the window is open, do not lock and return status message to the server
+Window->Lock: If the window is close, Lock the window.
+Window-->Server: Return Window state + Success message
